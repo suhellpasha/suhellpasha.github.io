@@ -9,5 +9,23 @@
 <body>
     <h1>Hello from Node.js!</h1>
     <p>This is a simple Node.js project.</p>
+    <button id="createFileBtn">Create sample.txt</button>
+
+    <script>
+        document.getElementById('createFileBtn').addEventListener('click', () => {
+            fetch('/createFile', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        alert('sample.txt created successfully!');
+                    } else {
+                        alert('Error creating sample.txt');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error creating sample.txt');
+                });
+        });
+    </script>
 </body>
 </html>
